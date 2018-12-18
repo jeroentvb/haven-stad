@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "setupdb": "node modules/setupDb.js",
     "start": "node index.js"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "jeroentvb-helper": "github:jeroentvb/jeroentvb-helper",
     "mysql": "^2.16.0"
   },
   "devDependencies": {
