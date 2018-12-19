@@ -39,12 +39,21 @@ function createTable (query, tableName) {
 }
 
 const query = {
-  test: 'CREATE TABLE IF NOT EXISTS havenstad.test(id INT NOT NULL AUTO_INCREMENT, test VARCHAR(255), PRIMARY KEY(id))'
+  articles: `CREATE TABLE IF NOT EXISTS havenstad.articles(
+    id INT NOT NULL AUTO_INCREMENT,
+    category VARCHAR(255),
+    date VARCHAR(255),
+    title VARCHAR(255),
+    text VARCHAR(255),
+    textorimage VARCHAR(255),
+    source VARCHAR(255),
+    PRIMARY KEY(id)
+  )`
 }
 
 Promise.all([
   createDb(),
-  createTable(query.test, 'test')
+  createTable(query.articles, 'articles')
 ])
   .then(() => {
     console.log('[Mysql] databse set up succesfully')

@@ -1,0 +1,36 @@
+<% include head %>
+
+<main>
+  <h1>Voeg een artikel toe aan de database</h1>
+  <form action="/addArticle" method="post">
+
+    <label>Categorie</label>
+    <select name="category" required>
+      <option value="veiligheid">Veiligheid</option>
+      <option value="duurzaamheid">Duurzaamheid</option>
+      <option value="leven">Leven</option>
+      <option value="mobiliteit">Mobiliteit</option>
+      <option value="wonen">Wonen</option>
+    </select>
+
+    <label>Datum van artikel</label>
+    <input type="text" name="date" required>
+
+    <label>Titel van artikel</label>
+    <input type="text" name="title" required placeholder="Hoe duurzaam haven-stad wordt">
+
+    <label>Samenvatting van artikel</label>
+    <textarea name="text" rows="8" cols="80"></textarea>
+
+    <label>Tekst/beeld van het artikel</label>
+    <textarea name="textorimage" rows="3" cols="80"></textarea>
+
+    <label>Bron(vermelding)</label>
+    <input type="text" name="source" placeholder="Hier moet een bronvermelding">
+
+    <input type="submit" name="submit">
+
+  </form>
+</main>
+
+<% include tail %>

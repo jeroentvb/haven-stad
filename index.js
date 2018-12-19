@@ -2,6 +2,7 @@ const express = require('express')
 const mysql = require('mysql')
 const chalk = require('chalk')
 const helper = require('jeroentvb-helper')
+const bodyParser = require('body-parser')
 
 require('dotenv').config()
 
@@ -54,7 +55,12 @@ module.exports = express()
   .set('view engine', 'ejs')
   .set('views', 'templates')
   .use(express.static('static'))
+  .use(bodyParser.urlencoded({
+    extended: true
+  }))
   .get('/', index)
+  .get('/add', addArticleForm)
+  .post('/addarticle', addArticle)
   .get('/article/:id', getArticle)
   .use(notFound)
   .listen(config.port, () => console.log(chalk.green(`[Server] listening on port ${config.port}...`)))
@@ -66,11 +72,34 @@ function index (req, res) {
 function getArticle (req, res) {
   let id = req.params.id
   console.log(id)
-  query('SELECT * FROM havenstad WHERE id = ?', id)
+  query('SELECT * FROM havenstad.articles WHERE id = ?', id)
     .then(data => res.send(data))
     .catch(err => {
       console.error(err)
       res.send(err)
+    })
+}
+
+function addArticleForm (req, res) {
+  res.render('form')
+}
+
+function addArticle (req, res) {
+  let data = {
+    category: req.body.category,
+    date: req.body.date,
+    title: req.body.title,
+    text: req.body.text,
+    textorimage: req.body.textorimage,
+    source: req.body.source
+  }
+  query('INSERT INTO havenstad.articles SET ?', data)
+    .then(response => res.redirect('/add'))
+    .catch(err => {
+      console.log(err)
+      res.render('error', {
+        error: err
+      })
     })
 }
 

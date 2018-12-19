@@ -1,0 +1,70 @@
+body {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 1fr;
+}
+
+aside {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  padding: 1em;
+
+  .logo {
+    width: 100%;
+  }
+
+  #categories {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+main {
+  // padding: 1em;
+  grid-column: 2 / 2;
+  grid-row: 1 / 1;
+
+  section {
+    article {
+      height: 45vh;
+      padding: 1em;
+      &:nth-of-type(1) {
+        background-color: $grey;
+      }
+      &:nth-of-type(2) {
+        background-color: $light-grey;
+      }
+
+      header {
+        display: flex;
+        flex-direction: row;
+
+        div {
+          margin-right: 1em;
+        }
+
+        .date {
+          flex-grow: 1;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: .5em;
+  }
+
+  select, input, textarea {
+    margin-bottom: 1em;
+  }
+}
