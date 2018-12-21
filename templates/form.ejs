@@ -6,27 +6,30 @@
 
     <label>Categorie</label>
     <select name="category" required>
-      <option value="veiligheid">Veiligheid</option>
       <option value="duurzaamheid">Duurzaamheid</option>
-      <option value="leven">Leven</option>
       <option value="mobiliteit">Mobiliteit</option>
-      <option value="wonen">Wonen</option>
+      <option value="stad in balans">Stad in balans</option>
+      <option value="woningbouw">Woningbouw</option>
+      <option value="werken">Werken</option>
     </select>
 
     <label>Datum van artikel</label>
     <input type="text" name="date" required>
 
     <label>Titel van artikel</label>
-    <input type="text" name="title" required placeholder="Hoe duurzaam haven-stad wordt">
+    <input type="text" name="title" required>
 
     <label>Samenvatting van artikel</label>
     <textarea name="text" rows="8" cols="80"></textarea>
 
-    <label>Tekst/beeld van het artikel</label>
+    <label>Beeld van het artikel</label>
     <textarea name="textorimage" rows="3" cols="80"></textarea>
 
     <label>Bron(vermelding)</label>
-    <input type="text" name="source" placeholder="Hier moet een bronvermelding">
+    <input type="text" name="source">
+
+    <label>Tekst haven-stad</label>
+    <textarea name="texthavenstad" rows="8" cols="80"></textarea>
 
     <input type="submit" name="submit">
 

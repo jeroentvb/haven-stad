@@ -1,0 +1,32 @@
+#date-slider-section {
+  position: absolute;
+  bottom: 1em;
+  right: 2em;
+  width: 75vw;
+}
+
+#date-slider {
+  z-index: 99;
+  width: 100%;
+  background-color: $black;
+
+  .ui-slider-range {
+    background-color: $red;
+  }
+
+  .ui-slider-handle {
+    width: 0.6em;
+    height: 2em;
+    background-color: $grey;
+    top: -1em;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      cursor: grab;
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}

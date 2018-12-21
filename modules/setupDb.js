@@ -47,6 +47,7 @@ const query = {
     text VARCHAR(255),
     textorimage VARCHAR(255),
     source VARCHAR(255),
+    texthavenstad VARCHAR(255),
     PRIMARY KEY(id)
   )`
 }

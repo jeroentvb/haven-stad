@@ -71,9 +71,19 @@ function index (req, res) {
 
 function getArticle (req, res) {
   let id = req.params.id
-  console.log(id)
   query('SELECT * FROM havenstad.articles WHERE id = ?', id)
-    .then(data => res.send(data))
+    .then(data => {
+      if (data[0] !== undefined) {
+        res.render('article', {
+          data: data[0]
+        })
+      } else {
+        res.render('error', {
+          page: 'Artikel bestaat niet',
+          error: `Het opgevraagde artikel met id ${id}, bestaat niet.`
+        })
+      }
+    })
     .catch(err => {
       console.error(err)
       res.send(err)
@@ -91,7 +101,8 @@ function addArticle (req, res) {
     title: req.body.title,
     text: req.body.text,
     textorimage: req.body.textorimage,
-    source: req.body.source
+    source: req.body.source,
+    texthavenstad: req.body.texthavenstad
   }
   query('INSERT INTO havenstad.articles SET ?', data)
     .then(response => res.redirect('/add'))
