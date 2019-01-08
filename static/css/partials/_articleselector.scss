@@ -1,0 +1,29 @@
+#article-selector {
+  position: absolute;
+  top: 42%;
+}
+
+.category-circle {
+  width: 2em;
+  height: 2em;
+}
+
+.veiligheid {
+  fill: $category-red;
+}
+
+.duurzaamheid {
+  fill: $category-blue;
+}
+
+.leven {
+  fill: $category-yellow;
+}
+
+.mobiliteit {
+  fill: $category-green;
+}
+
+.wonen {
+  fill: $category-purple;
+}

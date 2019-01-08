@@ -20,7 +20,7 @@ function handleDisconnect () {
   // connect to db
   db.connect(err => {
     if (err) {
-      console.error('[MySql] error while connecting to the db:', err)
+      console.error(chalk.red('[MySql] error while connecting to the db:'), err)
       setTimeout(handleDisconnect, 10000)
     } else {
       console.log(chalk.green('[MySql] connection established..'))
@@ -48,7 +48,8 @@ function query (query, params) {
 }
 
 const config = {
-  port: 3000
+  port: 3000,
+  allowAdd: true
 }
 
 module.exports = express()
@@ -71,11 +72,23 @@ function index (req, res) {
 
 function getArticle (req, res) {
   let id = req.params.id
-  query('SELECT * FROM havenstad.articles WHERE id = ?', id)
+
+  Promise.all([
+    query('SELECT * FROM havenstad.articles WHERE id = ?', id),
+    query('SELECT * FROM havenstad.articles')
+  ])
     .then(data => {
-      if (data[0] !== undefined) {
+      let formattedData = {
+        article: data[0][0],
+        allArticles: data[1]
+      }
+      return formattedData
+    })
+    .then(data => {
+      if (data.article !== undefined) {
         res.render('article', {
-          data: data[0]
+          articles: data.allArticles,
+          article: data.article
         })
       } else {
         res.render('error', {
@@ -84,14 +97,15 @@ function getArticle (req, res) {
         })
       }
     })
-    .catch(err => {
-      console.error(err)
-      res.send(err)
-    })
+    .catch(err => console.error(err))
 }
 
 function addArticleForm (req, res) {
-  res.render('form')
+  if (config.allowAdd === true) {
+    res.render('form')
+  } else {
+    res.redirect('/')
+  }
 }
 
 function addArticle (req, res) {

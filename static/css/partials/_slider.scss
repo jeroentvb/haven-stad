@@ -1,0 +1,56 @@
+#date-slider-section {
+  // position: absolute;
+  // bottom: 2em;
+  // right: 2em;
+  // width: 75vw;
+}
+
+#date-slider {
+  z-index: 99;
+  width: 100%;
+  background-color: $black;
+  height: 2em;
+  overflow: hidden;
+
+  #slider-months {
+    color: $white;
+    display: flex;
+    flex-direction: row;
+
+    %months-text {
+      margin: 0;
+      padding-top: 4px;
+      position: absolute;
+    }
+
+    #month-left {
+      @extend %months-text;
+      left: 6px;
+    }
+
+    #month-right {
+      @extend %months-text;
+      right: 96px;
+    }
+  }
+
+  .ui-slider-range {
+    background-color: $red;
+  }
+
+  .ui-slider-handle {
+    width: 1em;
+    height: 2em;
+    background-color: $grey;
+    top: 0;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      cursor: grab;
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}

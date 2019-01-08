@@ -15,13 +15,16 @@
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "jeroentvb-helper": "github:jeroentvb/jeroentvb-helper",
     "mysql": "^2.16.0"
   },
   "devDependencies": {
+    "jeroentvb-helper": "github:jeroentvb/jeroentvb-helper",
     "nodemon": "^1.18.9"
   },
   "nodemonConfig": {
-    "ignore": ["*-export.json"]
+    "ignore": [
+      "*-export.json",
+      "static/*"
+    ]
   }
 }

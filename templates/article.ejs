@@ -7,10 +7,10 @@
       <article>
         <header>
           <div class="category">
-            <span class="text"><%= data.category.charAt(0).toUpperCase() + data.category.slice(1) %></span>
+            <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
           </div>
           <div class="date">
-            <span class="text"><%= data.date %></span>
+            <span class="text"><%= article.date %></span>
           </div>
           <div class="back">
             <a href="/" class="back">Terug</a>
@@ -18,9 +18,11 @@
         </header>
 
         <div class="content">
-          <h1><%= data.title %></h1>
-          <p><%= data.text %></p>
+          <h1><%= article.title %></h1>
+          <p><%= article.text %></p>
         </div>
+
+        <% include articleselector %>
       </article>
 
       <article>
@@ -29,7 +31,7 @@
             <h3>Haven-Stad</h3>
           </div>
           <div class="text">
-            <p><%= data.texthavenstad %></p>
+            <p><%= article.texthavenstad %></p>
           </div>
         </div>
       </article>
