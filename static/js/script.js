@@ -1,93 +1,72 @@
-/* global $ */
+/* global fetch */
 
-function elById (el) {
-  return document.getElementById(el)
+const currentCategory = document.getElementsByClassName('text')[0].textContent.toLowerCase()
+
+function fetchArticles () {
+  fetch('/getarticles')
+    .then(res => res.json())
+    .then(articles => renderArticleDots(articles))
+    .catch(err => console.error(err))
 }
 
-const dateSlider = $('#date-slider')
-const month = {
-  min: $('#min-month'),
-  max: $('#max-month')
-}
-const sliderText = {
-  left: $('#month-left'),
-  right: $('#month-right')
-}
-const months = [
-  'Januari',
-  'Februari',
-  'Maart',
-  'April',
-  'Mei',
-  'Juni',
-  'Juli',
-  'Augustus',
-  'September',
-  'Oktober',
-  'November',
-  'December'
-]
-const filters = [
-  elById('veiligheid'),
-  elById('duurzaamheid'),
-  elById('leven'),
-  elById('mobiliteit'),
-  elById('wonen')
-]
-
-function newDate (dateString) {
-  return new Date(dateString).getTime() / 1000
-}
-
-function changeDate (event, ui) {
-  let firstDate = new Date(ui.values[0] * 1000)
-  let secondDate = new Date(ui.values[ 1 ] * 1000)
-
-  month.min.text(months[firstDate.getMonth()])
-  month.max.text(months[secondDate.getMonth()])
-  sliderText.left.text(months[firstDate.getMonth()])
-  // slidetText.left.css('transform', `translateX()`)
-  sliderText.right.text(months[secondDate.getMonth()])
-  console.log(event, ui.values[0], ui.values[1])
-}
-
-function createSlider () {
-  dateSlider.slider({
-    range: true,
-    min: newDate('01 January, 2018 00:0:00'),
-    max: newDate('December 31, 2018 00:0:00'),
-    step: 1,
-    values: [ newDate('Februari 01, 2018 00:0:00'), newDate('October 31, 2018 00:0:00') ],
-    slide: changeDate
+function renderArticleDots (articles) {
+  articles.sort(function (a, b) {
+    let c = a.date.split('-').reverse()
+    let d = b.date.split('-').reverse()
+    return new Date(c) - new Date(d)
   })
+
+  articles.forEach(article => {
+    const articleSelector = document.getElementById('article-selector')
+
+    let a = document.createElement('a')
+    a.setAttribute('href', `/article/${article.id}`)
+    a.setAttribute('class', `category-${article.category.split(' ').join('-')}`)
+    a.innerHTML = createSvg(article)
+    articleSelector.appendChild(a)
+  })
+  biggerBubbles()
 }
 
-function initFilters () {
-  filters.forEach(filter => {
-    filter.addEventListener('change', event => {
-      let el = {
-        id: event.target.id,
-        checked: event.target.checked
-      }
-      let articles = document.getElementsByClassName(el.id)
+function createSvg (article) {
+  let svg = `<svg version="1.1" id="circle-${article.id}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 1080 1080" style="enable-background:new 0 0 1080 1080;" xml:space="preserve" class="category-circle">`
+  svg += `<g>`
+  svg += `<circle class="${article.category.split(' ').join('-')}" cx="540.5" cy="540.5" r="536.5"/>`
+  svg += `</g>`
+  svg += `</svg>`
 
-      if (el.checked) {
-        for (let i = 0; i < articles.length; i++) {
-          articles[i].classList.remove('hidden')
-        }
-      } else {
-        for (let i = 0; i < articles.length; i++) {
-          articles[i].classList.add('hidden')
-        }
-      }
-    })
-  })
+  return svg
+}
+
+function biggerBubbles () {
+  // Make main bubble biggest
+  let id = window.location.href.split('/').splice(-1)[0]
+  let currentBubble = document.getElementById(`circle-${id}`)
+  currentBubble.classList.remove('category-circle')
+  currentBubble.classList.add('category-circle-large')
+
+  // Make current category bubbles bigger
+  let currentCategoryElements = document.getElementsByClassName(`category-${currentCategory}`)
+
+  for (let i = 0; i < currentCategoryElements.length; i++) {
+    currentCategoryElements[i].childNodes[0].classList.remove('category-circle')
+    currentCategoryElements[i].childNodes[0].classList.add('category-circle-medium')
+  }
+}
+
+function backgroundColor () {
+  document.getElementsByTagName('main')[0].classList.add(`${currentCategory}-background`)
+}
+
+function textColor () {
+  console.log(document.querySelector('article h1'))
 }
 
 function init () {
-  console.log('Init!')
-  createSlider()
-  initFilters()
+  fetchArticles()
+  backgroundColor()
+  textColor()
 }
 
 init()

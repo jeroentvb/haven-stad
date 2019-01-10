@@ -53,64 +53,54 @@ aside {
           margin: 0;
           flex-grow: 1; }
 
-body {
-  display: grid;
-  grid-template-columns: 20vw 80vw;
-  grid-template-rows: 1fr; }
-
 main {
-  grid-column: 2 / 2;
-  grid-row: 1 / 1;
   height: 100vh;
   overflow-y: hidden; }
-  main section article {
-    height: 40vh;
-    padding: 1em; }
-    main section article:nth-of-type(1) {
-      background-color: #d7d7d7; }
-    main section article:nth-of-type(2) {
-      background-color: #f5f5f5; }
-    main section article header {
-      display: flex;
-      flex-direction: row; }
-      main section article header div {
-        margin-right: 1em;
-        align-self: center; }
-      main section article header .category {
-        color: #fff;
-        width: 7em;
-        height: 7em;
-        border-radius: 50%;
-        text-align: center; }
-        main section article header .category .text {
-          position: relative;
-          top: 2.8em; }
-      main section article header .date {
-        flex-grow: 1; }
-        main section article header .date .text {
-          background-color: #fff;
-          padding: .5em 1em; }
-      main section article header .back {
-        background-color: transparent;
-        border: none;
-        text-decoration: none;
-        color: #4a4a4a; }
-        main section article header .back:focus {
-          outline: none; }
-        main section article header .back:hover {
-          cursor: pointer; }
-    main section article .content {
-      display: flex;
-      flex-direction: row; }
-      main section article .content h1 {
-        width: 20vw;
-        flex-grow: 1; }
-      main section article .content p {
-        width: 40vw; }
-      main section article .content .title {
-        flex-grow: 1; }
+  main section {
+    display: grid;
+    grid-template-rows: 50vh 50vh; }
+    main section article {
+      height: 100%;
+      padding: 2em 4em; }
+      main section article:nth-of-type(1) {
+        grid-row: 1 / 1; }
+      main section article:nth-of-type(2) {
+        grid-row: 2 / 2; }
+      main section article header {
+        display: flex;
+        flex-direction: row; }
+        main section article header div {
+          margin-right: 1em;
+          align-self: center; }
+        main section article header .category {
+          color: #fff;
+          width: 7em;
+          height: 7em;
+          border-radius: 50%;
+          text-align: center; }
+          main section article header .category .text {
+            position: relative;
+            top: 2.8em; }
+        main section article header .date {
+          flex-grow: 1; }
+          main section article header .date .text {
+            background-color: #fff;
+            padding: .5em 1em; }
+      main section article .content {
+        display: flex;
+        flex-direction: row; }
+        main section article .content h1 {
+          width: 20vw;
+          flex-grow: 1; }
+        main section article .content p {
+          width: 40vw; }
+        main section article .content .title {
+          flex-grow: 1; }
   main #date-slider-section {
     height: 5vh; }
+
+#form {
+  overflow: scroll; }
 
 form {
   display: flex;
@@ -122,62 +112,63 @@ form {
 
 #article-selector {
   position: absolute;
-  top: 42%; }
+  top: calc(50vh - 30px);
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  #article-selector a {
+    margin: 4px; }
 
 .category-circle {
   width: 1em;
   height: 1em; }
 
+.category-circle-medium {
+  width: 2em;
+  height: 2em; }
+
+.category-circle-large {
+  width: 4em;
+  height: 4em; }
+
 .veiligheid {
   fill: #ee2100;
-  background-color: #ee2100; }
+  background-color: #ee2100;
+  color: #ee2100; }
+
+.veiligheid-background {
+  background-color: #ee210025; }
 
 .duurzaamheid {
   fill: #1653a7;
-  background-color: #1653a7; }
+  background-color: #1653a7;
+  color: #1653a7; }
+
+.duurzaamheid-background {
+  background-color: #1653a725; }
 
 .leven {
   fill: #f9a400;
-  background-color: #f9a400; }
+  background-color: #f9a400;
+  color: #f9a400; }
+
+.leven-background {
+  background-color: #f9a40025; }
 
 .mobiliteit {
   fill: #00ab49;
-  background-color: #00ab49; }
+  background-color: #00ab49;
+  color: #00ab49; }
+
+.mobiliteit-background {
+  background-color: #00ab4925; }
 
 .wonen {
   fill: #aa2e94;
-  background-color: #aa2e94; }
+  background-color: #aa2e94;
+  color: #aa2e94; }
 
-#date-slider {
-  z-index: 99;
-  width: 100%;
-  background-color: #2f2f2f;
-  height: 2em;
-  overflow: hidden; }
-  #date-slider #slider-months {
-    color: #fff;
-    display: flex;
-    flex-direction: row; }
-    #date-slider #slider-months #month-left, #date-slider #slider-months #month-right {
-      margin: 0;
-      padding-top: 4px;
-      position: absolute; }
-    #date-slider #slider-months #month-left {
-      left: 6px; }
-    #date-slider #slider-months #month-right {
-      right: 96px; }
-  #date-slider .ui-slider-range {
-    background-color: #ee2100; }
-  #date-slider .ui-slider-handle {
-    width: 1em;
-    height: 2em;
-    background-color: #d7d7d7;
-    top: 0; }
-    #date-slider .ui-slider-handle:focus {
-      outline: none; }
-    #date-slider .ui-slider-handle:hover {
-      cursor: grab; }
-    #date-slider .ui-slider-handle:active {
-      cursor: grabbing; }
+.wonen-background {
+  background-color: #aa2e9425; }
 
 /*# sourceMappingURL=styles.css.map */

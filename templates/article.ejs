@@ -1,7 +1,5 @@
 <% include head %>
 
-<% include aside %>
-
   <main>
     <section>
       <article>
@@ -12,9 +10,6 @@
           <div class="date">
             <span class="text"><%= article.date %></span>
           </div>
-          <div class="back">
-            <a href="/" class="back">Terug</a>
-          </div>
         </header>
 
         <div class="content">
@@ -22,13 +17,15 @@
           <p><%= article.text %></p>
         </div>
 
-        <% include articleselector %>
+        <div id="article-selector">
+
+        </div>
       </article>
 
       <article>
         <div class="content">
           <div class="title">
-            <h3>Haven-Stad</h3>
+            <h1>Haven-Stad</h1>
           </div>
           <div class="text">
             <p><%= article.texthavenstad %></p>
@@ -37,7 +34,6 @@
       </article>
     </section>
 
-    <% include dateslider %>
   </main>
 
   <footer>

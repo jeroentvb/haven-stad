@@ -63,6 +63,7 @@ module.exports = express()
   .get('/add', addArticleForm)
   .post('/addarticle', addArticle)
   .get('/article/:id', getArticle)
+  .get('/getarticles', sendArticles)
   .use(notFound)
   .listen(config.port, () => console.log(chalk.green(`[Server] listening on port ${config.port}...`)))
 
@@ -73,22 +74,12 @@ function index (req, res) {
 function getArticle (req, res) {
   let id = req.params.id
 
-  Promise.all([
-    query('SELECT * FROM havenstad.articles WHERE id = ?', id),
-    query('SELECT * FROM havenstad.articles')
-  ])
-    .then(data => {
-      let formattedData = {
-        article: data[0][0],
-        allArticles: data[1]
-      }
-      return formattedData
-    })
-    .then(data => {
-      if (data.article !== undefined) {
+  query('SELECT * FROM havenstad.articles WHERE id = ?', id)
+    .then(data => data[0])
+    .then(article => {
+      if (article !== undefined) {
         res.render('article', {
-          articles: data.allArticles,
-          article: data.article
+          article: article
         })
       } else {
         res.render('error', {
@@ -100,8 +91,11 @@ function getArticle (req, res) {
     .catch(err => console.error(err))
 }
 
-function sendArticles () {
-  
+function sendArticles (req, res) {
+  query('SELECT * FROM havenstad.articles')
+    .then(data => data)
+    .then(articles => res.json(articles))
+    .catch(err => console.error(err))
 }
 
 function addArticleForm (req, res) {
@@ -120,7 +114,8 @@ function addArticle (req, res) {
     text: req.body.text,
     textorimage: req.body.textorimage,
     source: req.body.source,
-    texthavenstad: req.body.texthavenstad
+    texthavenstad: req.body.texthavenstad,
+    year: req.body.year
   }
   query('INSERT INTO havenstad.articles SET ?', data)
     .then(response => res.redirect('/add'))

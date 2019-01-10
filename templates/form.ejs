@@ -1,6 +1,6 @@
 <% include head %>
 
-<main>
+<main id="form">
   <h1>Voeg een artikel toe aan de database</h1>
   <form action="/addArticle" method="post">
 
@@ -8,8 +8,8 @@
     <select name="category" required>
       <option value="duurzaamheid">Duurzaamheid</option>
       <option value="mobiliteit">Mobiliteit</option>
-      <option value="stad in balans">Stad in balans</option>
-      <option value="woningbouw">Woningbouw</option>
+      <option value="leven">Leven</option>
+      <option value="wonen">Wonen</option>
       <option value="werken">Werken</option>
     </select>
 
@@ -30,6 +30,9 @@
 
     <label>Tekst haven-stad</label>
     <textarea name="texthavenstad" rows="8" cols="80"></textarea>
+
+    <label>Jaartal havenstad</label>
+    <input type="number" name="year" placeholder="2040">
 
     <input type="submit" name="submit">
 
