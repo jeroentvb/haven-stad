@@ -60,7 +60,12 @@ function backgroundColor () {
 }
 
 function textColor () {
-  console.log(document.querySelector('article h1'))
+  let titles = document.getElementsByClassName('article-title')
+  console.log(titles)
+  for (let i = 0; i < titles.length; i++) {
+    titles[i].classList.add(currentCategory)
+    titles[i].style.backgroundColor = 'transparent'
+  }
 }
 
 function init () {
