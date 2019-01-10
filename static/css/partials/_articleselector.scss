@@ -4,26 +4,31 @@
 }
 
 .category-circle {
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
 }
 
 .veiligheid {
   fill: $category-red;
+  background-color: $category-red;
 }
 
 .duurzaamheid {
   fill: $category-blue;
+  background-color: $category-blue;
 }
 
 .leven {
   fill: $category-yellow;
+  background-color: $category-yellow;
 }
 
 .mobiliteit {
   fill: $category-green;
+  background-color: $category-green;
 }
 
 .wonen {
   fill: $category-purple;
+  background-color: $category-purple;
 }

@@ -6,7 +6,7 @@
     <section>
       <article>
         <header>
-          <div class="category">
+          <div class="category <%= article.category.split(' ').join('-') %>">
             <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
           </div>
           <div class="date">

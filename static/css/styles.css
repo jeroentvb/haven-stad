@@ -77,7 +77,6 @@ main {
         margin-right: 1em;
         align-self: center; }
       main section article header .category {
-        background-color: #4a4a4a;
         color: #fff;
         width: 7em;
         height: 7em;
@@ -126,23 +125,28 @@ form {
   top: 42%; }
 
 .category-circle {
-  width: 2em;
-  height: 2em; }
+  width: 1em;
+  height: 1em; }
 
 .veiligheid {
-  fill: #ee2100; }
+  fill: #ee2100;
+  background-color: #ee2100; }
 
 .duurzaamheid {
-  fill: #1653a7; }
+  fill: #1653a7;
+  background-color: #1653a7; }
 
 .leven {
-  fill: #f9a400; }
+  fill: #f9a400;
+  background-color: #f9a400; }
 
 .mobiliteit {
-  fill: #00ab49; }
+  fill: #00ab49;
+  background-color: #00ab49; }
 
 .wonen {
-  fill: #aa2e94; }
+  fill: #aa2e94;
+  background-color: #aa2e94; }
 
 #date-slider {
   z-index: 99;

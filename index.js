@@ -67,7 +67,7 @@ module.exports = express()
   .listen(config.port, () => console.log(chalk.green(`[Server] listening on port ${config.port}...`)))
 
 function index (req, res) {
-  res.render('index')
+  res.redirect('/article/1')
 }
 
 function getArticle (req, res) {
@@ -98,6 +98,10 @@ function getArticle (req, res) {
       }
     })
     .catch(err => console.error(err))
+}
+
+function sendArticles () {
+  
 }
 
 function addArticleForm (req, res) {
