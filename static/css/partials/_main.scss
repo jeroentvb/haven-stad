@@ -30,7 +30,6 @@ main {
         grid-row: 1 / 1;
 
         div {
-          margin-right: 1em;
           align-self: center;
         }
 
@@ -40,6 +39,7 @@ main {
           height: 7em;
           border-radius: 50%;
           text-align: center;
+          margin-right: 1em;
 
           .text {
             position: relative;

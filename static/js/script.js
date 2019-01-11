@@ -65,6 +65,11 @@ function textColor () {
     titles[i].classList.add(currentCategory)
     titles[i].style.backgroundColor = 'transparent'
   }
+
+  let bodyText = document.getElementsByClassName('body-text')
+  for (let i = 0; i < bodyText.length; i++) {
+    bodyText[i].classList.add(currentCategory)
+  }
 }
 
 function init () {

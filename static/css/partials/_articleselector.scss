@@ -35,6 +35,28 @@
   height: 4em;
 }
 
+.body-text {
+  color: #000 !important;
+  background-color: #fff !important;
+  padding: 1em;
+  border-radius: 20px;
+  &.veiligheid {
+    box-shadow: 14px 14px $category-red;
+  }
+  &.duurzaamheid {
+    box-shadow: 14px 14px $category-blue;
+  }
+  &.leven {
+    box-shadow: 14px 14px $category-green;
+  }
+  &.mobiliteit {
+    box-shadow: 14px 14px $category-yellow;
+  }
+  &.wonen {
+    box-shadow: 14px 14px $category-purple;
+  }
+}
+
 @mixin color($color) {
   fill: $color;
   background-color: $color;
@@ -58,19 +80,19 @@
 }
 
 .leven {
-  @include color($category-yellow)
-}
-
-.leven-background {
-  background-color: #f9a40025;
-}
-
-.mobiliteit {
   @include color($category-green)
 }
 
-.mobiliteit-background {
+.leven-background {
   background-color: #00ab4925;
+}
+
+.mobiliteit {
+  @include color($category-yellow)
+}
+
+.mobiliteit-background {
+  background-color: #f9a40025;
 }
 
 .wonen {

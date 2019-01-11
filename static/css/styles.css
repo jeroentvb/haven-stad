@@ -78,14 +78,14 @@ main {
         grid-column: 1 / 1;
         grid-row: 1 / 1; }
         main section article header div {
-          margin-right: 1em;
           align-self: center; }
         main section article header .category {
           color: #fff;
           width: 7em;
           height: 7em;
           border-radius: 50%;
-          text-align: center; }
+          text-align: center;
+          margin-right: 1em; }
           main section article header .category .text {
             position: relative;
             top: 2.8em; }
@@ -151,6 +151,22 @@ form {
   width: 4em;
   height: 4em; }
 
+.body-text {
+  color: #000 !important;
+  background-color: #fff !important;
+  padding: 1em;
+  border-radius: 20px; }
+  .body-text.veiligheid {
+    box-shadow: 14px 14px #ee2100; }
+  .body-text.duurzaamheid {
+    box-shadow: 14px 14px #1653a7; }
+  .body-text.leven {
+    box-shadow: 14px 14px #00ab49; }
+  .body-text.mobiliteit {
+    box-shadow: 14px 14px #f9a400; }
+  .body-text.wonen {
+    box-shadow: 14px 14px #aa2e94; }
+
 .veiligheid {
   fill: #ee2100;
   background-color: #ee2100;
@@ -168,20 +184,20 @@ form {
   background-color: #1653a725; }
 
 .leven {
-  fill: #f9a400;
-  background-color: #f9a400;
-  color: #f9a400; }
-
-.leven-background {
-  background-color: #f9a40025; }
-
-.mobiliteit {
   fill: #00ab49;
   background-color: #00ab49;
   color: #00ab49; }
 
-.mobiliteit-background {
+.leven-background {
   background-color: #00ab4925; }
+
+.mobiliteit {
+  fill: #f9a400;
+  background-color: #f9a400;
+  color: #f9a400; }
+
+.mobiliteit-background {
+  background-color: #f9a40025; }
 
 .wonen {
   fill: #aa2e94;
