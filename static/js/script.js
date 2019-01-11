@@ -1,4 +1,4 @@
-/* global fetch */
+/* global fetch, d3 */
 
 const currentCategory = document.getElementsByClassName('text')[0].textContent.toLowerCase()
 
@@ -61,7 +61,6 @@ function backgroundColor () {
 
 function textColor () {
   let titles = document.getElementsByClassName('article-title')
-  console.log(titles)
   for (let i = 0; i < titles.length; i++) {
     titles[i].classList.add(currentCategory)
     titles[i].style.backgroundColor = 'transparent'
