@@ -10,8 +10,12 @@ main {
     display: grid;
     grid-template-rows: 50vh 50vh;
     article {
-      height: 100%;
-      padding: 2em 4em;
+      // height: 100%;
+      padding: 2em $article-padding-left;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: $article-padding-left;
       &:nth-of-type(1) {
         grid-row: 1 / 1;
       }
@@ -22,6 +26,8 @@ main {
       header {
         display: flex;
         flex-direction: row;
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
 
         div {
           margin-right: 1em;
@@ -51,22 +57,26 @@ main {
         }
       }
 
-      .content {
-        display: flex;
-        flex-direction: row;
+      #article-title {
+        grid-column: 1 / 1;
+        grid-row: 2 / 2;
+      }
 
-        h1 {
-          width: 20vw;
-          flex-grow: 1;
-        }
+      #article-text {
+        grid-column: 2 / 2;
+        grid-row: 2 / 2;
+        margin: 32px 0;
+      }
 
-        p {
-          width: 40vw;
-        }
+      #havenstad-title {
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+      }
 
-        .title {
-          flex-grow: 1;
-        }
+      #havenstad-text {
+        grid-column: 2 / 2;
+        grid-row: 1 / 1;
+        margin: 32px 0;
       }
     }
   }

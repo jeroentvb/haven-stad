@@ -63,15 +63,20 @@ main {
     display: grid;
     grid-template-rows: 50vh 50vh; }
     main section article {
-      height: 100%;
-      padding: 2em 4em; }
+      padding: 2em 6em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: 6em; }
       main section article:nth-of-type(1) {
         grid-row: 1 / 1; }
       main section article:nth-of-type(2) {
         grid-row: 2 / 2; }
       main section article header {
         display: flex;
-        flex-direction: row; }
+        flex-direction: row;
+        grid-column: 1 / 1;
+        grid-row: 1 / 1; }
         main section article header div {
           margin-right: 1em;
           align-self: center; }
@@ -89,16 +94,20 @@ main {
           main section article header .date .text {
             background-color: #fff;
             padding: .5em 1em; }
-      main section article .content {
-        display: flex;
-        flex-direction: row; }
-        main section article .content h1 {
-          width: 20vw;
-          flex-grow: 1; }
-        main section article .content p {
-          width: 40vw; }
-        main section article .content .title {
-          flex-grow: 1; }
+      main section article #article-title {
+        grid-column: 1 / 1;
+        grid-row: 2 / 2; }
+      main section article #article-text {
+        grid-column: 2 / 2;
+        grid-row: 2 / 2;
+        margin: 32px 0; }
+      main section article #havenstad-title {
+        grid-column: 1 / 1;
+        grid-row: 1 / 1; }
+      main section article #havenstad-text {
+        grid-column: 2 / 2;
+        grid-row: 1 / 1;
+        margin: 32px 0; }
   main #date-slider-section {
     height: 5vh; }
 
@@ -124,7 +133,7 @@ form {
     background-color: #fff;
     width: 100vw;
     position: absolute;
-    left: -4em;
+    left: -6em;
     height: 8px;
     z-index: -1; }
   #article-selector a {

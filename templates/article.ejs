@@ -12,10 +12,8 @@
           </div>
         </header>
 
-        <div class="content">
-          <h1 class="article-title"><%= article.title %></h1>
-          <p><%= article.text %></p>
-        </div>
+        <h1 class="article-title" id="article-title"><%= article.title %></h1>
+        <p id="article-text""><%= article.text %></p>
 
         <div id="article-selector">
           <div class="background">
@@ -25,21 +23,11 @@
       </article>
 
       <article>
-        <div class="content">
-          <div class="title">
-            <h1 class="article-title">Haven-Stad</h1>
-          </div>
-          <div class="text">
-            <p><%= article.texthavenstad %></p>
-          </div>
-        </div>
+        <h1 class="article-title" id="havenstad-title">Haven-Stad</h1>
+        <p id="havenstad-text"><%= article.texthavenstad %></p>
       </article>
     </section>
 
   </main>
-
-  <footer>
-
-  </footer>
 
 <% include tail %>
