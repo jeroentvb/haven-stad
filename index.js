@@ -114,8 +114,8 @@ function addArticle (req, res) {
     text: req.body.text,
     textorimage: req.body.textorimage,
     source: req.body.source,
-    texthavenstad: req.body.texthavenstad,
-    year: req.body.year
+    titlehavenstad: req.body.titlehavenstad,
+    texthavenstad: req.body.texthavenstad
   }
   query('INSERT INTO havenstad.articles SET ?', data)
     .then(response => res.redirect('/add'))
