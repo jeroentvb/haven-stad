@@ -1,6 +1,66 @@
-/* global fetch, d3 */
+/* global fetch */
 
 const currentCategory = document.getElementsByClassName('text')[0].textContent.toLowerCase()
+const keyWords = [
+  'veilig',
+  'veilige',
+  'gezondheid',
+  'gezond',
+  'gezonde',
+  'stimuleren',
+  'woning',
+  'woningen',
+  'woningmarkt',
+  'woningbouw',
+  'ontwikkelen',
+  'ontwikkeling',
+  'ontwikkeld ',
+  'stimuleren',
+  'uitstootvrij',
+  'luchtkwaliteit',
+  'infrastructuur',
+  'hoofdstad',
+  'luchtverontreiniging',
+  'gezondheidsschade',
+  'milieuzones',
+  'stikstofdioxide',
+  'elementen',
+  'cultuur',
+  'duurzame',
+  'duurzaam',
+  'duurzaamheid',
+  'warmte- en koudevoorzieningen',
+  'Spaarndammertunnel',
+  'autoverkeer',
+  'mobiliteit',
+  'bereikbaarheid',
+  'sportvoorzieningen',
+  'De Bewegende Stad',
+  'uitstoot',
+  'scheepvaart',
+  'plint',
+  'duurzaamheidsdoelen',
+  'windmolens',
+  'zonnepanelen',
+  'elektriciteit',
+  'Zelfrijdende',
+  'toekomstbeeld',
+  'transformatiestrategie',
+  'gemeenteraad',
+  'verkeersinfrastructuur',
+  'kantoren',
+  'metronetwerk',
+  'Noord-Zuidlijn',
+  'recycling',
+  'circulaire',
+  'bedrijfsruimte',
+  'werkruimtes',
+  'mix',
+  'hoogstedelijk gebied',
+  '2040',
+  'Pontsteiger',
+  'ondernemers'
+]
 
 function fetchArticles () {
   fetch('/getarticles')
@@ -21,7 +81,7 @@ function renderArticleDots (articles) {
 
     let a = document.createElement('a')
     a.setAttribute('href', `/article/${article.id}`)
-    a.setAttribute('class', `category-${article.category.split(' ').join('-')}`)
+    a.setAttribute('class', `link category-${article.category.split(' ').join('-')}`)
     a.innerHTML = createSvg(article)
     articleSelector.appendChild(a)
   })
@@ -41,7 +101,7 @@ function createSvg (article) {
 
 function biggerBubbles () {
   // Make main bubble biggest
-  let id = window.location.href.split('/').splice(-1)[0]
+  let id = window.location.href.split('/').splice(-1)[0] ? window.location.href.split('/').splice(-1)[0] : 1
   let currentBubble = document.getElementById(`circle-${id}`)
   currentBubble.classList.remove('category-circle')
   currentBubble.classList.add('category-circle-large')
@@ -61,7 +121,7 @@ function backgroundColor () {
 
 function textColor () {
   let titles = document.getElementsByClassName('article-title')
-  for (let i = 0; i < titles.length; i++) {
+  for (let i = 1; i < titles.length; i++) {
     titles[i].classList.add(currentCategory)
     titles[i].style.backgroundColor = 'transparent'
   }
@@ -72,10 +132,29 @@ function textColor () {
   }
 }
 
+function highLightWords (array) {
+  let text = {
+    article: document.getElementsByClassName('body-text')[0],
+    havenstad: document.getElementsByClassName('body-text')[1]
+  }
+  array.forEach(word => {
+    checkText(text.article, word)
+    checkText(text.havenstad, word)
+  })
+}
+
+function checkText (text, word) {
+  if (text.textContent.indexOf(word) !== -1) {
+    // console.log(word)
+    text.innerHTML = text.innerHTML.replace(word, `<span class="${currentCategory} highlight">${word}</span>`)
+  }
+}
+
 function init () {
   fetchArticles()
   backgroundColor()
   textColor()
+  highLightWords(keyWords)
 }
 
 init()

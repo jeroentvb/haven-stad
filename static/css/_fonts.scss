@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Avenir';
+    src: local('Avenir Medium'), local('Avenir-Medium'),
+        url('../fonts/Avenir-Medium.woff2') format('woff2'),
+        url('../fonts/Avenir-Medium.woff') format('woff'),
+        url('../fonts/Avenir-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Black Oblique';
+    src: local('Avenir Black Oblique'), local('Avenir-BlackOblique'),
+        url('../fonts/Avenir-BlackOblique.woff2') format('woff2'),
+        url('../fonts/Avenir-BlackOblique.woff') format('woff'),
+        url('../fonts/Avenir-BlackOblique.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: local('Avenir Black'), local('Avenir-Black'),
+        url('../fonts/Avenir-Black.woff2') format('woff2'),
+        url('../fonts/Avenir-Black.woff') format('woff'),
+        url('../fonts/Avenir-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}

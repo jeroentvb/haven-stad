@@ -68,7 +68,20 @@ module.exports = express()
   .listen(config.port, () => console.log(chalk.green(`[Server] listening on port ${config.port}...`)))
 
 function index (req, res) {
-  res.redirect('/article/1')
+  query('SELECT * FROM havenstad.articles WHERE id = ?', 10)
+    .then(article => {
+      if (article[0] !== undefined) {
+        res.render('index', {
+          article: article[0]
+        })
+      } else {
+        res.render('error', {
+          page: 'Artikel bestaat niet',
+          error: `Het opgevraagde artikel met id 10, bestaat niet.`
+        })
+      }
+    })
+    .catch(err => console.error(err))
 }
 
 function getArticle (req, res) {
@@ -93,7 +106,6 @@ function getArticle (req, res) {
 
 function sendArticles (req, res) {
   query('SELECT * FROM havenstad.articles')
-    .then(data => data)
     .then(articles => res.json(articles))
     .catch(err => console.error(err))
 }

@@ -1,7 +1,63 @@
 <% include head %>
 
-<% include aside %>
+  <main>
+    <div id="start-overlay">
+      <h1>Haven-Stad Tijdlijn</h1>
+      <p>De Haven-Stad Tijdlijn laat je gebeurtenissen zien uit 2018 en koppelt deze aan verwachtingen voor Haven-Stad in de toekomst.</p>
+      <p>Er zijn 5 categorieën die je kunt ontdekken en deze worden aangegeven met een kleur.</p>
+      <div class="category-bubbles">
+        <div class="category mobiliteit">
+          <span class="category-text">Mobiliteit</span>
+        </div>
+        <div class="category leven">
+          <span class="category-text">Leven</span>
+        </div>
+        <div class="category duurzaamheid">
+          <span class="category-text">Duurzaamheid</span>
+        </div>
+        <div class="category veiligheid">
+          <span class="category-text">Veiligheid</span>
+        </div>
+        <div class="category wonen">
+          <span class="category-text">Wonen</span>
+        </div>
+      </div>
+      <a href="/article/10" class="start-button">Start ></a>
+    </div>
 
-<% include dateslider %>
+    <section>
+      <article style="background-image: url(../img/articles/<%= article.textorimage %>);" class="<%= article.category %>-gradient">
+        <header>
+          <div class="category <%= article.category.split(' ').join('-') %>">
+            <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
+          </div>
+          <div class="date">
+            <span class="text"><%= article.date %></span>
+          </div>
+        </header>
+
+        <h1 class="article-title" id="article-title"><%= article.title %></h1>
+        <div id="article-text">
+          <p class="body-text"><%= article.text %></p>
+        </div>
+
+
+        <div id="article-selector">
+          <div class="background">
+
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <h1 class="article-title" id="havenstad-title">Haven-Stad in de toekomst</h1>
+        <h2 id="havenstad-subtitle"><%= article.titlehavenstad %></h2>
+        <div id="havenstad-text">
+          <p class="body-text"><%= article.texthavenstad %></p>
+        </div>
+      </article>
+    </section>
+
+  </main>
 
 <% include tail %>

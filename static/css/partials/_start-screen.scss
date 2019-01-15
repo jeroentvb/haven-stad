@@ -1,0 +1,57 @@
+#start-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(37, 37, 37, 0.9);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  h1 {
+    color: #fff;
+    font-size: 55px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 8px 0;
+    font-size: 22px;
+    text-align: center;
+    width: 75%;
+  }
+
+  .category-bubbles {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+  }
+
+  .category {
+    color: #fff;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 1em;
+    .category-text {
+      color: #fff !important;
+      position: relative;
+      top: 3.5em;
+      font-size: 20px;
+    }
+  }
+
+  .start-button {
+    background-color: #fff;
+    border-radius: 4em;
+    padding: 0.5em 1em;
+    margin-top: 2em;
+    color: $dark-grey;
+    font-family: 'Avenir';
+    font-weight: 900;
+    font-size: 32px;
+  }
+}
