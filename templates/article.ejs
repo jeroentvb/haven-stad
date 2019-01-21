@@ -17,7 +17,7 @@
 
   <main>
     <section>
-      <article style="background-image: url(../img/articles/<%= article.textorimage %>);" class="<%= article.category %>-gradient">
+      <article style="background-image: url(../img/articles/<%= article.textorimage %>);">
         <header>
           <div class="category <%= article.category.split(' ').join('-') %>">
             <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
@@ -39,7 +39,7 @@
           <p class="body-text"><%= article.text %></p>
         </div>
 
-
+        <div id="hover-date"></div>
         <div id="article-selector">
           <div class="background"></div>
         </div>

@@ -7,6 +7,7 @@ body {
   font-family: 'Avenir', verdana;
   font-weight: 500;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 $grey: #d7d7d7;
@@ -22,7 +23,8 @@ $category-yellow: #f9a400;
 $category-green: #00ab49;
 $category-purple: #aa2e94;
 
-$article-padding-left: 12em;
+$article-padding-left: 6em;
+$article-padding-left-small: 2em;
 
 h1, h2, h3, h4, h5, h6 {
   color: $dark-grey;

@@ -5,8 +5,14 @@
   flex-direction: row;
   align-items: center;
   z-index: 10;
-  width: calc(100% - 24em);
-  justify-content: center;
+  width: 100%;
+  // justify-content: center;
+  overflow: scroll;
+  left: 0;
+  scrollbar-color: transparent transparent;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .background {
     background-color: #fff;
@@ -16,6 +22,9 @@
     height: 8px;
     z-index: -1;
     top: 42%;
+    @media (max-width: 1200px) {
+      left: 0;
+    }
   }
 
   a {
@@ -26,16 +35,37 @@
 .category-circle {
   width: 1em;
   height: 1em;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+#hover-date {
+  transition: all 0.2s;
+  border-radius: 15px;
+  padding: 8px 16px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 20;
 }
 
 .category-circle-medium {
   width: 2em;
   height: 2em;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .category-circle-large {
   width: 4em;
   height: 4em;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .link {
@@ -68,7 +98,7 @@
 @mixin color($color) {
   fill: $color;
   background-color: $color;
-  color: $color
+  color: $color;
 }
 
 .veiligheid {
