@@ -65,15 +65,15 @@ function renderArticleDots (articles) {
 
       if (a.childNodes[0].classList.contains('category-circle')) {
         hoverDate.style.top = `${position.top + 30}px`
-        hoverDate.style.left = `${position.left - 35}px`
+        hoverDate.style.left = `${position.left - 45}px`
       }
       if (a.childNodes[0].classList.contains('category-circle-medium')) {
         hoverDate.style.top = `${position.top + 40}px`
-        hoverDate.style.left = `${position.left - 32}px`
+        hoverDate.style.left = `${position.left - 42}px`
       }
       if (a.childNodes[0].classList.contains('category-circle-large')) {
         hoverDate.style.top = `${position.top + 70}px`
-        hoverDate.style.left = `${position.left - 15}px`
+        hoverDate.style.left = `${position.left - 25}px`
       }
       hoverDate.style.display = 'block'
       let day = date.split('-')[0]
