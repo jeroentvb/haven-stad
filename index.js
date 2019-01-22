@@ -4,6 +4,7 @@ const mysql = require('mysql')
 const chalk = require('chalk')
 const helper = require('jeroentvb-helper')
 const bodyParser = require('body-parser')
+const config = require('./app-config.json')
 
 require('dotenv').config()
 
@@ -46,11 +47,6 @@ function query (query, params) {
       resolve(result)
     })
   })
-}
-
-const config = {
-  port: 3000,
-  allowAdd: true
 }
 
 module.exports = express()
