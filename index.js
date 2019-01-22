@@ -2,7 +2,6 @@ const express = require('express')
 const helmet = require('helmet')
 const mysql = require('mysql')
 const chalk = require('chalk')
-const helper = require('jeroentvb-helper')
 const bodyParser = require('body-parser')
 const config = require('./app-config.json')
 
