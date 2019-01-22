@@ -1,4 +1,5 @@
 const express = require('express')
+const helmet = require('helmet')
 const mysql = require('mysql')
 const chalk = require('chalk')
 const helper = require('jeroentvb-helper')
@@ -56,6 +57,7 @@ module.exports = express()
   .set('view engine', 'ejs')
   .set('views', 'templates')
   .use(express.static('static'))
+  .use(helmet())
   .use(bodyParser.urlencoded({
     extended: true
   }))
