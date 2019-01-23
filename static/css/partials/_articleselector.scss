@@ -51,6 +51,43 @@
   z-index: 20;
 }
 
+#date1, #date2 {
+  transition: all 0.2s;
+  border-radius: 15px;
+  padding: 8px 16px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 20;
+  top: 70vh;
+}
+
+#date1 {
+  left: 9px;
+  border-radius: 0 15px 15px 0;
+}
+
+#date2 {
+  right: 9px;
+  border-radius: 15px 0 0 15px;
+}
+
+#pole1, #pole2 {
+  background: #fff;
+  z-index: 9;
+  width: 8px;
+  height: 32px;
+  position: absolute;
+  top: 75vh;
+}
+
+#pole1 {
+  left: 9px;
+}
+
+#pole2 {
+  right: 9px;
+}
+
 .category-circle-medium {
   width: 2em;
   height: 2em;

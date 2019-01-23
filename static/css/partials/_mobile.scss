@@ -57,6 +57,18 @@
       margin-bottom: 10em;
     }
   }
+
+  #date1 {
+    top: 101vh;
+  }
+
+  #pole1 {
+    top: 107vh;
+  }
+
+  #pole2, #date2 {
+    display: none;
+  }
 }
 
 @media (max-width: $mobile-width) {
@@ -76,6 +88,13 @@
       }
     }
   }
+  #date1 {
+    top: 121vh;
+  }
+
+  #pole1 {
+    top: 127vh;
+  }
 }
 
 @media (max-width: 400px) {
@@ -94,5 +113,12 @@
         bottom: -99vh;
       }
     }
+  }
+  #date1 {
+    top: 181vh;
+  }
+
+  #pole1 {
+    top: 187vh;
   }
 }
