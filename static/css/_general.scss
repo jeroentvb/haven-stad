@@ -27,6 +27,12 @@ $article-padding-left: 6em;
 $article-padding-left-small: 2em;
 $newspaper-background: #FFFEF9;
 
+$max-width: 1200px;
+$tablet-width: 1000px;
+$mobile-width: 700px;
+
+$top-row-height: 80vh;
+
 h1, h2, h3, h4, h5, h6 {
   color: $dark-grey;
   font-weight: 900;
@@ -46,4 +52,8 @@ a {
     text-decoration: none;
     cursor: pointer;
   }
+}
+
+p {
+  font-size: 18px;
 }

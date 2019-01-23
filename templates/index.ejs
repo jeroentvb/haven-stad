@@ -1,8 +1,23 @@
 <% include head %>
+<% var months = [
+  'januari',
+  'februari',
+  'maart',
+  'april',
+  'mei',
+  'juni',
+  'juli',
+  'augustus',
+  'september',
+  'oktober',
+  'november',
+  'december'
+]
+%>
 
   <main>
     <div id="start-overlay">
-      <h1>Haven-Stad Tijdlijn</h1>
+      <h1>Haven-Stad Linked</h1>
       <p>De Haven-Stad Tijdlijn laat je gebeurtenissen zien uit 2018 en koppelt deze aan verwachtingen voor Haven-Stad in de toekomst.</p>
       <p>Er zijn 5 categorieën die je kunt ontdekken en deze worden aangegeven met een kleur.</p>
       <div class="category-bubbles">
@@ -22,30 +37,39 @@
           <span class="category-text">Wonen</span>
         </div>
       </div>
-      <a href="/article/10" class="start-button">Start ></a>
+      <a href="/article/10" class="button">Start ></a>
     </div>
 
     <section>
-      <article style="background-image: url(../img/articles/<%= article.textorimage %>);" class="<%= article.category %>-gradient">
+      <article style="background-image: url(../img/articles/<%= article.textorimage %>);">
         <header>
           <div class="category <%= article.category.split(' ').join('-') %>">
             <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
           </div>
-          <div class="date">
-            <span class="text"><%= article.date %></span>
-          </div>
         </header>
-
-        <h1 class="article-title" id="article-title"><%= article.title %></h1>
-        <div id="article-text">
-          <p class="body-text"><%= article.text %></p>
+        <div class="news-item-wrap">
+          <div id="article-text" class="news-item">
+            <img src="../img/papers/<%= article.sourcelogo %>" alt="" class="paper-logo">
+            <h1 class="article-title"><%= article.title %></h1>
+            <p>
+              <span class="date text">
+                <%
+                var day = article.date.split('-')[0]
+                var month = article.date.split('-')[1]
+                var year = article.date.split('-')[2]
+                %>
+                <%=day%> <%=months[month - 1]%> <%=year%>
+              </span></p>
+            <p class="body-text"><%= article.text %></p>
+            <p class="source-wrap">
+              <a href="<%= article.source %>" class="source" target="_blank"><%= article.source %></a>
+            </p>
+          </div>
         </div>
 
-
+        <div id="hover-date"></div>
         <div id="article-selector">
-          <div class="background">
-
-          </div>
+          <div class="background"></div>
         </div>
       </article>
 

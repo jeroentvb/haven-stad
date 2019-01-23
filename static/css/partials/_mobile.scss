@@ -1,4 +1,4 @@
-@media (max-width: 900px) {
+@media (max-width: $tablet-width) {
   main section {
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
 
       #article-selector {
         top: auto;
-        bottom: -28vh;
+        bottom: -19vh;
         .background {
           // display: none;
         }
@@ -55,6 +55,44 @@
     }
     .start-button {
       margin-bottom: 10em;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  main section {
+    display: flex;
+    flex-direction: column;
+    article {
+      display: flex;
+      flex-direction: column;
+      &:nth-of-type(1) {
+        height: 120.3vh;
+        // height: 100%;
+      }
+      #article-selector {
+        top: auto;
+        bottom: -39vh;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  main section {
+    display: flex;
+    flex-direction: column;
+    article {
+      display: flex;
+      flex-direction: column;
+      &:nth-of-type(1) {
+        height: 180.3vh;
+        // height: 100%;
+      }
+      #article-selector {
+        top: auto;
+        bottom: -99vh;
+      }
     }
   }
 }

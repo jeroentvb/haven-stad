@@ -1,6 +1,6 @@
 #article-selector {
   position: absolute;
-  top: calc(50vh - 30px);
+  top: calc(#{$top-row-height} - 30px);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,10 +16,10 @@
 
   .background {
     background-color: #fff;
-    width: 100vw;
+    width: 1300px;
     position: absolute;
     left: -$article-padding-left;
-    height: 8px;
+    height: 4px;
     z-index: -1;
     top: 42%;
     @media (max-width: 1200px) {
@@ -42,6 +42,7 @@
 }
 
 #hover-date {
+  display: none;
   transition: all 0.2s;
   border-radius: 15px;
   padding: 8px 16px;
@@ -74,25 +75,26 @@
 
 .body-text {
   color: #000 !important;
-  background-color: #fff !important;
+  background-color: transparent !important;
   padding: 1em;
-  border-radius: 20px;
+  // border-radius: 20px;
   margin-top: 0;
-  &.veiligheid {
-    box-shadow: 14px 14px $category-red;
-  }
-  &.duurzaamheid {
-    box-shadow: 14px 14px $category-blue;
-  }
-  &.leven {
-    box-shadow: 14px 14px $category-green;
-  }
-  &.mobiliteit {
-    box-shadow: 14px 14px $category-yellow;
-  }
-  &.wonen {
-    box-shadow: 14px 14px $category-purple;
-  }
+  font-size: 18px;
+  // &.veiligheid {
+  //   box-shadow: 14px 14px $category-blue;
+  // }
+  // &.duurzaamheid {
+  //   box-shadow: 14px 14px $category-green;
+  // }
+  // &.leven {
+  //   box-shadow: 14px 14px $category-purple;
+  // }
+  // &.mobiliteit {
+  //   box-shadow: 14px 14px $category-red;
+  // }
+  // &.wonen {
+  //   box-shadow: 14px 14px $category-yellow;
+  // }
 }
 
 @mixin color($color) {
@@ -102,43 +104,43 @@
 }
 
 .veiligheid {
-  @include color($category-red)
-}
-
-.veiligheid-background {
-  background-color: #ee210025;
-}
-
-.duurzaamheid {
   @include color($category-blue)
 }
 
-.duurzaamheid-background {
+.veiligheid-background {
   background-color: #1653a725;
 }
 
-.leven {
+.duurzaamheid {
   @include color($category-green)
 }
 
-.leven-background {
+.duurzaamheid-background {
   background-color: #00ab4925;
 }
 
-.mobiliteit {
-  @include color($category-yellow)
-}
-
-.mobiliteit-background {
-  background-color: #f9a40025;
-}
-
-.wonen {
+.leven {
   @include color($category-purple)
 }
 
-.wonen-background {
+.leven-background {
   background-color: #aa2e9425;
+}
+
+.mobiliteit {
+  @include color($category-red)
+}
+
+.mobiliteit-background {
+  background-color: #ee210025;
+}
+
+.wonen {
+  @include color($category-yellow)
+}
+
+.wonen-background {
+  background-color: #f9a40025;
 }
 
 @mixin gradient($color) {
@@ -147,21 +149,21 @@
 }
 
 .mobiliteit-gradient:before {
-  @include gradient($category-yellow)
-}
-
-.wonen-gradient:before {
-  @include gradient($category-purple)
-}
-
-.leven-gradient:before {
-  @include gradient($category-green)
-}
-
-.veiligheid-gradient:before {
   @include gradient($category-red)
 }
 
-.duurzaamheid-gradient:before {
+.wonen-gradient:before {
+  @include gradient($category-yellow)
+}
+
+.leven-gradient:before {
+  @include gradient($category-purple)
+}
+
+.veiligheid-gradient:before {
   @include gradient($category-blue)
+}
+
+.duurzaamheid-gradient:before {
+  @include gradient($category-green)
 }

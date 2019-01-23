@@ -27,3 +27,43 @@
     font-weight: 900;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'PT Serif';
+    src: local('PT Serif Bold Italic'), local('PTSerif-BoldItalic'),
+        url('../fonts/PTSerif-BoldItalic.woff2') format('woff2'),
+        url('../fonts/PTSerif-BoldItalic.woff') format('woff'),
+        url('../fonts/PTSerif-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    src: local('PT Serif Italic'), local('PTSerif-Italic'),
+        url('../fonts/PTSerif-Italic.woff2') format('woff2'),
+        url('../fonts/PTSerif-Italic.woff') format('woff'),
+        url('../fonts/PTSerif-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    src: local('PT Serif'), local('PTSerif-Regular'),
+        url('../fonts/PTSerif-Regular.woff2') format('woff2'),
+        url('../fonts/PTSerif-Regular.woff') format('woff'),
+        url('../fonts/PTSerif-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    src: local('PT Serif Bold'), local('PTSerif-Bold'),
+        url('../fonts/PTSerif-Bold.woff2') format('woff2'),
+        url('../fonts/PTSerif-Bold.woff') format('woff'),
+        url('../fonts/PTSerif-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

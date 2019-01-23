@@ -1,10 +1,11 @@
-/* global XMLHttpRequest */
+/* global XMLHttpRequest, localStorage */
 
 const currentCategory = document.getElementsByClassName('text')[0].textContent.toLowerCase()
 const keyWords = [
   'Rijkswaterstaat', 'Nederlandse spoor', 'speelvoorzieningen', 'veiligheidsraad', 'veiligheidseisen', 'veilige', 'veilig', 'sigaretten', 'gezichten', 'Amsterdamse traditie', 'bevolkingssamenstelling', 'Verenigde Naties', 'stimuleert', 'medische', 'dossier', 'nascheiden', 'gescheiden', 'scheiding', 'scheiden', 'prijsstijgingen', 'gladde oppervlakken', 'kleinschalige ', 'traditionele', 'sportparken', 'openbare', 'opwekken', 'productiedoelstelling', 'groene omgeving', 'groengebieden', 'gezondheidsmaatregelen', 'Wereldgezondheidsorganisatie', 'Volksgezondheid', 'huishoudelijk', 'ongezondste', 'ongezonder', 'ongezond', 'snackbarvrije', 'snackbars', 'snackbar', 'gezondheidsschade', 'gezondheid', 'gezondere', 'gezonder', 'gezonde', 'gezond', 'fietsinfrastructuur', 'waardestijging', 'waardeverhoging', 'fietsbrug', 'snorfietsen', 'kwaliteit', 'huizenprijzen', 'recyclebare ', 'niet-recyclebaar', 'stimuleren', 'huurprijzen', 'huurprijsstijging', 'huurwoningen', 'zwaarlijvigheid', 'wandelen', 'wandelpromenade', 'verbeteren', 'woningprijzen', 'subsidies', 'huurappartementen', 'woningcorporaties', 'rookvrije-', 'rookvrije', 'primaire', 'schoolpleinen', 'oplossing', 'dorp', 'kwartaalcijfers', 'cijfers', 'bouwrijpe grond', 'woningzoekers', 'woningtypen', 'woningmarkt', 'woningbouw', 'woningen', 'woning', 'bruggen', 'oplaadpunten', 'milieubeeld', 'ontwikkelingen', 'ontwikkeling', 'ontwikkeld ', 'stimuleren', 'uitstootvrije', 'uitstootvrij', 'overlast', 'luierrecyclingfabriek', 'infrastructuur', 'bestemmingsplannen', 'hoofdstad', 'ambiances', 'luchtverontreiniging', 'luchtkwaliteit', 'milieuzones', 'milieuzone', 'zones', 'zone', 'obesitas', 'overgewicht', 'stoffen', 'Grondstoffen', 'grondstoffen', 'grondstof', 'stikstofdioxide', 'elementen', 'burgemeester', 'culturele', 'cultuur', 'koopwoningen', 'duurzaamheidsdoelen', 'duurzaamheid', 'duurzame', 'duurzaam', 'warmte- en koudevoorzieningen', 'Spaarndammerbuurt', 'Spaarndammertunnel', 'bewust', 'verkeersinfrastructuur', 'autoverkeer', 'mobiliteitsingrepen', 'mobiliteit', 'bereikbaarheid', 'sportvoorzieningen', 'sporten', 'leefbaarheid', 'waterstoffabriek', 'waterkering', 'water', 'De Bewegende Stad', 'uitstoot', 'Olympische Winterspelen', 'bewegen', 'capaciteitskrapte', 'scheepvaart', 'innovatiekracht', 'plint', 'binnenstedelijke', 'beweging', 'voeding', 'windmolens', 'materialen', 'zonnepanelen', 'leefomgevingskwaliteit', 'leefomgeving', 'laad-/losactiviteiten', 'ov-ponten', 'elektriciteit', 'Zelfrijdende', 'toekomstbeeld', 'transformatiestrategie', 'gemeenteraad', 'gemeenten', 'OV-bereikbaarheid', 'parkeerplekken', 'parkeergarage', 'parkeervergunningen', 'milieucontouren', 'milieucategorieën', 'milieuclub', 'Fitbit', 'investeringen', 'kantoren', 'CO2-besparing', 'CO2-uitstoot', 'windenergie', 'NS-watertappunt', 'Nederlandse Spoorwegen', 'watertappunten', 'plastic', 'flesjes', 'hoge dichtheid', 'zonne-energie', 'inflatie', 'Westerpark', 'CBS', 'metronetwerk', 'metrolijn', 'evenementen', 'bedrijven', 'Noord-Zuidlijn', 'hergebruiken', 'recycling', 'circulaire', 'rust', 'bedrijfsruimte', 'vacatures', 'werkgelegenheid', 'werkruimtes', 'hoge dichtheden', 'karakteristieken', 'mix', 'hoogstedelijk gebied', 'pontverbindingen', 'onderzoekscijfers', 'Pontsteigergarage', 'Pontsteiger', 'Femke Halsema', 'ondernemers', 'zonbescherming', 'recreatiegebieden', 'recreatieve voorzieningen', 'voorzieningen', 'afval', 'hittestress', 'Hittestress', 'Hitteplan', 'hitte', 'elektrische', 'personenauto ', 'autowegen', 'auto’s', 'auto', 'dieselvoertuigen', 'diesel'
 ]
 const hoverDate = document.getElementById('hover-date')
+const articleSelector = document.getElementById('article-selector')
 const months = [
   'januari',
   'februari',
@@ -50,8 +51,6 @@ function renderArticleDots (articles) {
   })
 
   articles.forEach(article => {
-    const articleSelector = document.getElementById('article-selector')
-
     let a = document.createElement('a')
     a.setAttribute('href', `/article/${article.id}`)
     a.setAttribute('class', `link category-${article.category.split(' ').join('-')}`)
@@ -101,7 +100,7 @@ function createSvg (article) {
 
 function biggerBubbles () {
   // Make main bubble biggest
-  let id = window.location.href.split('/').splice(-1)[0] ? window.location.href.split('/').splice(-1)[0] : 1
+  let id = window.location.href.split('/').splice(-1)[0] ? window.location.href.split('/').splice(-1)[0] : 10
   let currentBubble = document.getElementById(`circle-${id}`)
   currentBubble.classList.remove('category-circle')
   currentBubble.classList.add('category-circle-large')
@@ -160,11 +159,31 @@ function getOffset (el) {
   }
 }
 
+function hint () {
+  let windowWidth = window.innerWidth
+  let hint = document.getElementById('hint-overlay')
+  if (localStorage.getItem('shownHint') !== 'true' && windowWidth <= 1000) {
+    hint.style.display = 'block'
+    articleSelector.style.top = '50vh'
+    articleSelector.style.bottom = 'auto'
+    articleSelector.style.position = 'fixed'
+    localStorage.setItem('shownHint', 'true')
+  }
+
+  document.getElementById('understood').addEventListener('click', () => {
+    hint.style.display = 'none'
+    articleSelector.style.top = ''
+    articleSelector.style.bottom = ''
+    articleSelector.style.position = ''
+  })
+}
+
 function init () {
   fetchArticles()
   backgroundColor()
   textColor()
   highLightWords(keyWords)
+  hint()
 }
 
 init()

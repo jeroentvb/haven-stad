@@ -17,27 +17,40 @@
 
   <main>
     <section>
+      <div id="hint-overlay">
+        <h2>Swipe om alle elementen te zien</h2>
+        <img src="../img/image.png" alt="swipe" class="swipe-hand">
+        <button type="button" name="button" class="button"  id="understood">Begrepen</button>
+      </div>
       <article style="background-image: url(../img/articles/<%= article.textorimage %>);">
         <header>
           <div class="category <%= article.category.split(' ').join('-') %>">
             <span class="text"><%= article.category.charAt(0).toUpperCase() + article.category.slice(1) %></span>
           </div>
-          <div class="date">
-            <span class="text">
-              <%
-              var day = article.date.split('-')[0]
-              var month = article.date.split('-')[1]
-              var year = article.date.split('-')[2]
-              %>
-              <%=day%> <%=months[month - 1]%> <%=year%>
-            </span>
-          </div>
         </header>
-
-        <h1 class="article-title" id="article-title"><%= article.title %></h1>
-        <div id="article-text">
-          <p class="body-text"><%= article.text %></p>
+        <div class="news-item-wrap">
+          <div id="article-text" class="news-item">
+            <img src="../img/papers/<%= article.sourcelogo %>" alt="" class="paper-logo">
+            <h1 class="article-title"><%= article.title %></h1>
+            <p>
+              <span class="date text">
+                <%
+                var day = article.date.split('-')[0]
+                var month = article.date.split('-')[1]
+                var year = article.date.split('-')[2]
+                %>
+                <%=day%> <%=months[month - 1]%> <%=year%>
+              </span></p>
+            <p class="body-text"><%= article.text %></p>
+            <p class="source-wrap">
+              <a href="<%= article.source %>" class="source" target="_blank"><%= article.source %></a>
+            </p>
+          </div>
+          <div class="news-background"></div>
         </div>
+
+
+
 
         <div id="hover-date"></div>
         <div id="article-selector">
