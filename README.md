@@ -1,7 +1,7 @@
 > Het opgevraagde artikel met id 1, bestaat niet.
 
 # Haven-Stad Tijdlijn
-Dit wordt een inleiding.
+Dit is het document met technische informatie over de applicatie Haven-Stad Linked.
 
 ## Inhoud
 * [Installatie](#installatie)
