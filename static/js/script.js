@@ -183,7 +183,9 @@ function init () {
   backgroundColor()
   textColor()
   highLightWords(keyWords)
-  hint()
+  if (document.getElementById('understood')) {
+    hint()
+  }
 }
 
 init()
